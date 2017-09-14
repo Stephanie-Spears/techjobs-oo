@@ -1,6 +1,5 @@
 package org.launchcode.models.data;
 
-import org.launchcode.models.Job;
 import org.launchcode.models.JobField;
 
 import java.util.ArrayList;
