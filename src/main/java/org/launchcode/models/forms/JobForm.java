@@ -52,6 +52,7 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
+        //use findAll() method for each class to supply them to the view
         locations = jobData.getLocations().findAll();
         coreCompetencies = jobData.getCoreCompetencies().findAll();
         positionTypes = jobData.getPositionTypes().findAll();

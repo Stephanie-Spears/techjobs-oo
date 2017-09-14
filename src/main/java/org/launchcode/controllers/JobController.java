@@ -26,8 +26,10 @@ public class JobController {
 
         // TODO #1 - get the Job with the given ID and pass it into the view
 
-        Job theJob = jobData.findById(id);
-        model.addAttribute("job", theJob);
+//        Job theJob = jobData.findById(id);
+//        model.addAttribute("job", theJob);
+        //use the jobData method, findById, with the supplied id-->returns a specific job object. supply that job object to the view.
+        model.addAttribute("job", jobData.findById(id));
 
         return "job-detail";
     }
@@ -44,29 +46,33 @@ public class JobController {
         // TODO #6 - Validate the JobForm model, and if valid, create a
         // new Job and add it to the jobData data store. Then
         // redirect to the job detail view for the new Job.
+
+        //if errors in JobForm object, redirect to new-job form again
+        //to-do: add pattern, so doesn't allow a space char to submit
         if(errors.hasErrors()) {
             return "new-job";
         }
 
-        // take the values from the form
+        //if no errors, take the values from the form using JobForm class getter methods and instantiate them in local objects
         String jobName = jobForm.getName();
         int employerId = jobForm.getEmployerId();
         int locationId = jobForm.getLocationId();
         int positionTypeId = jobForm.getPositionTypeId();
         int coreCompetencyId = jobForm.getCoreCompetencyId();
 
-        //use the id from the form to find corresponding objects
+        //use the ids from the form to find corresponding objects and instantiate local objects to store them
         Employer employer = jobData.getEmployers().findById(employerId);
         Location location = jobData.getLocations().findById(locationId);
         PositionType positionType = jobData.getPositionTypes().findById(positionTypeId);
         CoreCompetency coreCompetency = jobData.getCoreCompetencies().findById(coreCompetencyId);
 
-        //instantiate the new job object
+        //instantiate the new job object with the local arguments created above
         Job newJob = new Job(jobName,employer,location,positionType,coreCompetency);
 
-        //add the job object to jobdata
+        //add the new job object to jobData arrayList
         jobData.add(newJob);
 
+        //redirect to the new job's 'page' given it's id
         return "redirect:/job?id=" + newJob.getId();
     }
 }
