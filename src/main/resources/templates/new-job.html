@@ -26,6 +26,7 @@
         </div>
 
         <!-- TODO #5 - Create <select> dropdowns for other job fields -->
+        <!--using the supplied jobForm object, fill out each select group using the arrayList of *locations, *coreCompetencies, *positionTypes which were populated in the JobForm constructor-->
         <div class="form-group">
             <label th:for="locationId">Location</label>
             <select th:field="*{locationId}">

@@ -28,6 +28,8 @@ public class JobForm {
         Don't forget to add getters and setters
      */
 
+
+    //add locationId, positionTypeId, and coreCompetencyId fields (with getters and setters), required for a valid job object.
     @NotNull
     private int locationId;
 
@@ -52,7 +54,7 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
-        //use findAll() method for each class to supply them to the view
+        //use findAll() method for each class to supply them to their individual ArrayLists, which can then be used in view
         locations = jobData.getLocations().findAll();
         coreCompetencies = jobData.getCoreCompetencies().findAll();
         positionTypes = jobData.getPositionTypes().findAll();

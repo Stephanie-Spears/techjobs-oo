@@ -26,8 +26,9 @@ public class JobController {
 
         // TODO #1 - get the Job with the given ID and pass it into the view
 
-//        Job theJob = jobData.findById(id);
-//        model.addAttribute("job", theJob);
+//        Job aJob = jobData.findById(id);
+//        model.addAttribute("job", aJob);
+
         //use the jobData method, findById, with the supplied id-->returns a specific job object. supply that job object to the view.
         model.addAttribute("job", jobData.findById(id));
 
